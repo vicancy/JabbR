@@ -167,11 +167,6 @@ namespace JabbR
                 resolver.UseServiceBus(sbConfig);
             }
 
-            if (jabbrConfig.ScaleOutSqlServer)
-            {
-                resolver.UseSqlServer(jabbrConfig.SqlConnectionString.ConnectionString);
-            }
-
             kernel.Bind<IConnectionManager>()
                   .ToConstant(connectionManager);
 

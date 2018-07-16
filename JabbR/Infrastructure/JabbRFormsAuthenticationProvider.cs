@@ -155,5 +155,17 @@ namespace JabbR.Infrastructure
         {
             context.Response.Redirect(context.RedirectUri);
         }
+
+        public void ResponseSignedIn(CookieResponseSignedInContext context)
+        {
+        }
+
+        public void ResponseSignOut(CookieResponseSignOutContext context)
+        {
+        }
+
+        public void Exception(CookieExceptionContext context)
+        {
+        }
     }
 }
