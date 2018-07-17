@@ -71,7 +71,8 @@ namespace JabbR.Services
                 }
                 else if (settings.LocalFileSystemStoragePath.StartsWith(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, StringComparison.OrdinalIgnoreCase))
                 {
-                    errors.Add("LocalFileSystemStoragePath", "The path must not be under the JabbR root.");
+                    // TODO: why not?
+                    // errors.Add("LocalFileSystemStoragePath", "The path must not be under the JabbR root.");
                 }
             }
 
