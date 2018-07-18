@@ -15,6 +15,7 @@ using Microsoft.AspNet.SignalR.Hubs;
 using Microsoft.AspNet.SignalR.Infrastructure;
 using Microsoft.AspNet.SignalR.Transports;
 using Microsoft.Owin;
+using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.DataHandler;
 using Microsoft.Owin.Security.DataProtection;
@@ -180,7 +181,11 @@ namespace JabbR
 
             hubPipeline.AddModule(kernel.Get<LoggingHubPipelineModule>());
 
-            app.MapSignalR(config);
+            app.Map("/signalr", map =>
+            {
+                map.UseCors(CorsOptions.AllowAll)
+                .RunAzureSignalR(config);
+            });
 
             var monitor = new PresenceMonitor(kernel, connectionManager, heartbeat);
             monitor.Start();
