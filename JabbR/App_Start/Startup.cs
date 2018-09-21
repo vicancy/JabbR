@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.IO;
+using System.Net;
 using System.Net.Http.Formatting;
 using System.Web.Http;
 using JabbR;
@@ -35,6 +36,9 @@ namespace JabbR
         {
             // So that squishit works
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.SetupInformation.ApplicationBase);
+
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             var configuration = new JabbrConfiguration();
 
