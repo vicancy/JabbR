@@ -180,7 +180,10 @@ namespace JabbR
 
             hubPipeline.AddModule(kernel.Get<LoggingHubPipelineModule>());
 
-            app.MapSignalR(config);
+            app.RunAzureSignalR(typeof(Startup).FullName, new HubConfiguration(), s =>
+            {
+                s.ConnectionCount = 1;
+            });
 
             var monitor = new PresenceMonitor(kernel, connectionManager, heartbeat);
             monitor.Start();
